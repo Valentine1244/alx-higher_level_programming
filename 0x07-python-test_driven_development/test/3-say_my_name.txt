@@ -1,0 +1,50 @@
+This is a python test for ``3-say_my_name.py`` Created for ALX high level programming
+##########################################################################################
+
+Using ``say_my_name(first_name, last_name="")`` found in ../3-say_my_name.py
+
+------------------------------------------------------------------
+
+First import the 3-say_my_name.py module from ../3-say_my_name.py
+
+    >>> import sys
+    >>> sys.path.append('..')
+    >>> say_my_name = __import__("3-say_my_name").say_my_name
+
+Now, use it:
+
+    >>> say_my_name("Ambrose", "Kolurejo")
+    My name is Ambrose Kolurejo
+
+    >>> say_my_name("Ambrose") # doctest: +NORMALIZE_WHITESPACE
+    My name is Ambrose
+
+    >>> say_my_name(12)
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name("raven", 12)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name(None, None)
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name([], None)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name("Ambrose", None)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name([], [])
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string

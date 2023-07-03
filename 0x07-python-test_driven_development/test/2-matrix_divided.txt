@@ -1,0 +1,60 @@
+This is a python test for ``2-matrix_divided.py`` Created for ALX high level programming
+##########################################################################################
+
+Using ``matrix_divided(matrix, div)`` found in ../2-matrix_divided.py
+
+------------------------------------------------------------------
+
+First import the add_integer.py module from ../2-matrix_divided.py
+
+    >>> import sys
+    >>> sys.path.append('..')
+    >>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+
+Now, use it:
+
+    >>> matrix_divided([1,2,3,4], 1)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided(None, 1)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided([1,'a',2,3,4], 1)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided([[1,2,3,4], [1,2,3,4,'a']], 5)
+    Traceback (most recent call last):
+        ...
+    TypeError: Each row of the matrix must have the same size
+
+    >>> matrix_divided([[1,2,3,4], [1,2,3,'a']], 5)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided([[1,2,3,4], [1,2,3,4]], 'a')
+    Traceback (most recent call last):
+        ...
+    TypeError: div must be a number
+
+    >>> matrix_divided([[1,2,3,4], [1,2,3,4,5]], 2)
+    Traceback (most recent call last):
+        ...
+    TypeError: Each row of the matrix must have the same size
+
+    >>> matrix_divided([[1,2,3,4], [1,2,3,4]], 0)
+    Traceback (most recent call last):
+        ...
+    ZeroDivisionError: division by zero
+
+    >>> matrix_divided([[1,2,3,4], [1,2,3,4]], 1)
+    [[1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0]]
+
+    >>> matrix_divided([[1,2,3,4],[1,2,3,4]], 3)
+    [[0.33, 0.67, 1.0, 1.33], [0.33, 0.67, 1.0, 1.33]]
