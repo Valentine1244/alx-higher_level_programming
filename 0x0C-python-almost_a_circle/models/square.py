@@ -1,56 +1,63 @@
 #!/usr/bin/python3
-"""Provides a class to represent a square
-"""
 
 from models.rectangle import Rectangle
 
 
-class Square(Rectangle):
-    """Representation of a rectangle
-    """
-    HEADERS = ('id', 'size', 'x', 'y')
+"""
+This is a module containing the code for the Square class.
+"""
 
+
+class Square(Rectangle):
+    """
+    The Square class inherits from the Rectangle class which then
+    inherits from the Base class.
+    """
     def __init__(self, size, x=0, y=0, id=None):
-        """Instantiate a rectangle
-        """
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
-        """Get a string representation of a square
-        """
-        return "[{type}] ({id}) {x}/{y} - {size}".format(
-            type=self.__class__.__name__,
-            id=self.id,
-            size=self.size,
-            x=self.x,
-            y=self.y
-        )
+        return "[Square] ({}) {}/{} \
+- {}".format(self.id, self.x, self.y, self.width)
 
     @property
     def size(self):
-        """Get private instance attribute 'width'
-        """
         return self.width
 
     @size.setter
-    def size(self, size):
-        """Set private instance attributes 'width' and 'height'
-        """
-        self.width = size
-        self.height = size
-
-    def to_dictionary(self):
-        """Get a dictionary representation of a square
-        """
-        return {key: getattr(self, key) for key in self.__class__.HEADERS}
+    def size(self, value):
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+        elif value < 0:
+            raise ValueError("width must be >= 0")
+        else:
+            self.height = value
+            self.width = value
 
     def update(self, *args, **kwargs):
-        """Update the attributes of a  object
         """
-        if args:
-            for pair in zip(self.HEADERS, args):
-                setattr(self, *pair)
-        else:
-            for key in kwargs:
-                if key in self.HEADERS:
-                    setattr(self, key, kwargs[key])
+        Updates the value of the Square
+        """
+        if len(args) >= 1:
+            self.id = args[0]
+        if len(args) >= 2:
+            self.width = args[1]
+            self.height = args[1]
+        if len(args) >= 4:
+            self.x = args[2]
+        if len(args) >= 5:
+            self.y = args[3]
+        if len(args) == 0 and len(kwargs) > 0:
+            for key, val in kwargs.items():
+                setattr(self, key, val)
+
+    def to_dictionary(self):
+        """
+        Converts the object to a dictinoary
+        """
+        return {
+            "id": self.id,
+            "size": self.size,
+            "x": self.x,
+            "y": self.y
+            }
